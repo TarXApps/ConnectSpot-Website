@@ -39,39 +39,8 @@ export default function Header() {
           <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-9 w-auto" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) =>
-                `text-sm font-display tracking-wide transition-colors ${
-                  isActive ? "text-amber" : "text-bone/85 hover:text-amber"
-                }`
-              }
-            >
-              {l.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="hidden lg:flex items-center gap-4">
-          <a href="#" aria-label="LinkedIn" className="text-bone/70 hover:text-amber transition-colors">
-            <LinkedinIcon className="w-4 h-4" />
-          </a>
-          <a href="#" aria-label="Instagram" className="text-bone/70 hover:text-amber transition-colors">
-            <InstagramIcon className="w-4 h-4" />
-          </a>
-          <a href="#" aria-label="Facebook" className="text-bone/70 hover:text-amber transition-colors">
-            <FacebookIcon className="w-4 h-4" />
-          </a>
-          <a href="#" aria-label="X" className="text-bone/70 hover:text-amber transition-colors">
-            <TwitterIcon className="w-4 h-4" />
-          </a>
-        </div>
-
         <button
-          className="lg:hidden text-bone"
+          className="text-bone z-50 relative"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -80,7 +49,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`lg:hidden fixed inset-0 top-20 bg-ink transition-transform duration-300 ${
+        className={`fixed inset-0 bg-ink transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -91,7 +60,7 @@ export default function Header() {
               to={l.to}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `text-2xl font-display ${isActive ? "text-amber" : "text-bone"}`
+                `text-2xl sm:text-3xl font-display ${isActive ? "text-amber" : "text-bone"}`
               }
             >
               {l.label}
