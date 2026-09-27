@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import PageHeader from "../components/PageHeader";
 import {
   CalendarRange,
   ClipboardList,
@@ -57,25 +58,11 @@ const services = [
 export default function OurServices() {
   return (
     <>
-      <section className="pt-40 pb-20 bg-ink text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-6"
-          >
-            Our Services
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            Full-service event delivery, end to end
-          </motion.h1>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Our Services"
+        heading="We take events from idea to execution."
+        body="Some clients need one part of the process. Others need the whole thing. We do both."
+      />
 
       <section className="pb-24 bg-ink">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

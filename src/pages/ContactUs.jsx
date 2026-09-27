@@ -1,85 +1,75 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
 import ContactSection from "../components/ContactSection";
+import PageHeader from "../components/PageHeader";
 
 const gains = [
-  "Direct access to a team that handles strategy through onsite execution",
-  "A partner who understands the sectors and markets you operate in",
-  "Sponsorship and partnership packages structured to get signed",
-  "Onsite delivery that leaves nothing to chance",
-  "A relationship that grows with your business, edition after edition",
+  "Access to audiences built for your sector, not rented for the day",
+  "A team that stays involved from pitch to post-show report",
+  "Content and programming that positions you as a leader, not just a logo on a wall",
+  "Vendor and logistics management that already knows this region",
+  "Outcomes you can actually report back to your board",
 ];
 
 export default function ContactUs() {
   return (
     <>
-      <section className="pt-40 pb-16 bg-ink text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <motion.p
+      <PageHeader
+        eyebrow="Contact Us"
+        heading="Let's build your next event"
+        body="Whether you're exhibiting, sponsoring, or pitching us an idea, tell us what you're trying to do and we'll tell you if we're the right fit."
+      />
+
+      <section className="bg-ink py-16 lg:py-20">
+        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-6"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-googlesans font-semibold text-2xl sm:text-3xl tracking-tightest mb-8"
           >
-            Contact Us
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            Let's talk about your next event
-          </motion.h1>
+            You Gain
+          </motion.h2>
+          <ul className="space-y-4">
+            {gains.map((g, i) => (
+              <motion.li
+                key={g}
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-start gap-3 text-bone/70"
+              >
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber shrink-0" />
+                {g}
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="pb-24 bg-ink">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-5 gap-12">
-          <div className="lg:col-span-2">
-            <h2 className="font-display text-2xl font-semibold mb-6">You Gain</h2>
-            <ul className="space-y-4 mb-10">
-              {gains.map((g) => (
-                <li key={g} className="flex items-start gap-3 text-bone/70">
-                  <CheckCircle2 className="w-5 h-5 text-amber shrink-0 mt-0.5" />
-                  {g}
-                </li>
-              ))}
-            </ul>
+      <ContactSection />
 
-            <h3 className="font-display text-lg font-semibold mb-4">Direct Details</h3>
-            <ul className="space-y-3 text-bone/70">
-              <li className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-amber shrink-0" />
-                Riyadh, Saudi Arabia
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-amber shrink-0" />
-                <a href="tel:+966564319472" className="hover:text-amber transition-colors">
-                  +966 56 431 9472
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-amber shrink-0" />
-                <a
-                  href="mailto:info@connectspotexhibitions.com"
-                  className="hover:text-amber transition-colors"
-                >
-                  info@connectspotexhibitions.com
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="lg:col-span-3">
-            <ContactSection />
-          </div>
+      <section className="bg-ink-soft border-t border-ink-line py-20 lg:py-28 text-center px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          className="font-googlesans font-semibold text-3xl sm:text-4xl tracking-tightest max-w-2xl mx-auto text-balance mb-10"
+        >
+          Good events start with one honest conversation. Let's have it.
+        </motion.h2>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-bone/70">
+          <span>Riyadh, Saudi Arabia</span>
+          <a href="tel:+966564319472" className="hover:text-amber transition-colors">
+            +966 56 431 9472
+          </a>
+          <a
+            href="mailto:info@connectspotexhibitions.com"
+            className="hover:text-amber transition-colors"
+          >
+            info@connectspotexhibitions.com
+          </a>
         </div>
-      </section>
-
-      <section className="py-20 bg-ink-soft border-t border-ink-line text-center">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold">
-          We look forward to building your next event with you.
-        </h2>
       </section>
     </>
   );

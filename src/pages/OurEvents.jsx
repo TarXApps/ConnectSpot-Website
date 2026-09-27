@@ -1,37 +1,15 @@
 import { motion } from "framer-motion";
 import { editions, comingSoon } from "../data/events";
+import PageHeader from "../components/PageHeader";
 
 export default function OurEvents() {
   return (
     <>
-      <section className="pt-40 pb-20 bg-ink text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-6"
-          >
-            Our Events
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            EV Auto Show — four editions and growing
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 text-bone/70 max-w-2xl mx-auto"
-          >
-            Our flagship platform has run for four editions, and it's just the beginning of
-            what we're building next.
-          </motion.p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Events"
+        heading="Events that give industries a place to meet."
+        body="Different sectors. Different audiences. Different ambitions. One purpose: bringing the right people together."
+      />
 
       <section className="pb-24 bg-ink">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

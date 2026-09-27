@@ -10,6 +10,10 @@ function encodeFormData(data) {
     .join("&");
 }
 
+function newChallenge() {
+  return { a: Math.floor(Math.random() * 8) + 1, b: Math.floor(Math.random() * 8) + 1 };
+}
+
 export default function ContactSection() {
   const [form, setForm] = useState({
     email: "",
@@ -23,14 +27,13 @@ export default function ContactSection() {
   const [interests, setInterests] = useState([]);
   const [botField, setBotField] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [agreedError, setAgreedError] = useState(false);
+  const [challenge, setChallenge] = useState(newChallenge);
   const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
-
-  const challenge = useMemo(() => {
-    return { a: Math.floor(Math.random() * 8) + 1, b: Math.floor(Math.random() * 8) + 1 };
-  }, [submitted]);
 
   const toggleInterest = (opt) => {
     setInterests((prev) =>
@@ -46,12 +49,20 @@ export default function ContactSection() {
     e.preventDefault();
     setSubmitError(false);
 
-    if (!agreed) {
-      setSubmitError(true);
+    if (botField.trim() !== "") {
+      setSubmitted(true);
       return;
     }
+    if (!agreed) {
+      setAgreedError(true);
+      return;
+    }
+    setAgreedError(false);
+
     if (parseInt(captchaAnswer, 10) !== challenge.a + challenge.b) {
-      setSubmitError(true);
+      setCaptchaError(true);
+      setChallenge(newChallenge());
+      setCaptchaAnswer("");
       return;
     }
 
@@ -84,199 +95,238 @@ export default function ContactSection() {
       });
   };
 
-  if (submitted) {
-    return (
-      <div className="p-10 rounded-2xl bg-ink-soft border border-ink-line text-center">
-        <h3 className="font-display text-2xl font-semibold mb-3">Thank you.</h3>
-        <p className="text-bone/70">
-          We've received your message and will be in touch shortly.
-        </p>
-      </div>
-    );
-  }
-
   const inputClass =
-    "w-full px-4 py-3 rounded-lg bg-ink border border-ink-line text-bone placeholder:text-bone/40 focus:outline-none focus:border-amber transition-colors";
-  const labelClass = "block text-sm text-bone/70 mb-2";
+    "w-full bg-ink-soft border border-ink-line rounded-lg px-4 py-3 text-bone placeholder:text-bone/30 focus:outline-none focus:border-amber transition-colors";
+  const labelClass = "block text-xs font-mono uppercase tracking-wideish text-bone/50 mb-2";
 
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      onSubmit={handleSubmit}
-      className="p-6 sm:p-10 rounded-2xl bg-ink-soft border border-ink-line space-y-6"
-    >
-      {/* Honeypot field — hidden from real users */}
-      <div className="hidden" aria-hidden="true">
-        <label>
-          Don't fill this out if you're human:
-          <input
-            type="text"
-            name="bot-field"
-            tabIndex={-1}
-            autoComplete="off"
-            value={botField}
-            onChange={(e) => setBotField(e.target.value)}
-          />
-        </label>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-6">
-        <div>
-          <label className={labelClass}>First Name</label>
-          <input
-            required
-            type="text"
-            name="firstName"
-            value={form.firstName}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="Fatima"
-          />
-        </div>
-        <div>
-          <label className={labelClass}>Last Name</label>
-          <input
-            required
-            type="text"
-            name="lastName"
-            value={form.lastName}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="Al-Rashid"
-          />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-6">
-        <div>
-          <label className={labelClass}>Email</label>
-          <input
-            required
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="fatima@company.com"
-          />
-        </div>
-        <div>
-          <label className={labelClass}>Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="+966 5X XXX XXXX"
-          />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-6">
-        <div>
-          <label className={labelClass}>Job Title</label>
-          <input
-            required
-            type="text"
-            name="jobTitle"
-            value={form.jobTitle}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="Marketing Director"
-          />
-        </div>
-        <div>
-          <label className={labelClass}>Company Name</label>
-          <input
-            required
-            type="text"
-            name="companyName"
-            value={form.companyName}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="Company LLC"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className={labelClass}>Country of Residence</label>
-        <select
-          name="country"
-          value={form.country}
-          onChange={handleChange}
-          className={inputClass}
+    <section id="contact" className="bg-ink-soft border-y border-ink-line py-16 lg:py-24 scroll-mt-24">
+      <div className="max-w-[820px] mx-auto px-6 lg:px-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-display font-semibold text-3xl sm:text-4xl tracking-tightest text-center mb-12"
         >
-          <option value="">Select a country</option>
-          {countries.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </div>
+          Fill in the brief
+        </motion.h2>
 
-      <div>
-        <label className={labelClass}>I'm interested in</label>
-        <div className="flex flex-wrap gap-3">
-          {interestOptions.map((opt) => (
+        {submitted ? (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center border border-amber/40 rounded-2xl py-16 px-8"
+          >
+            <p className="font-display text-2xl text-bone mb-2">
+              Thanks, {form.firstName || "there"}.
+            </p>
+            <p className="text-bone/60">We've got your message and will be in touch shortly.</p>
+          </motion.div>
+        ) : (
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-10"
+          >
+            <div>
+              <h3 className="font-display text-xl font-semibold text-bone mb-6">
+                Personal Info
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className={labelClass}>Email *</label>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="sara@yourcompany.sa"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>First Name *</label>
+                  <input
+                    required
+                    type="text"
+                    name="firstName"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    placeholder="Sara"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Last Name *</label>
+                  <input
+                    required
+                    type="text"
+                    name="lastName"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    placeholder="Al Mansoori"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Job Title *</label>
+                  <input
+                    required
+                    type="text"
+                    name="jobTitle"
+                    value={form.jobTitle}
+                    onChange={handleChange}
+                    placeholder="Marketing Manager"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="+966 50 123 4567"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className={labelClass}>Country of Residence</label>
+                  <select
+                    name="country"
+                    value={form.country}
+                    onChange={handleChange}
+                    className={`${inputClass} appearance-none`}
+                  >
+                    <option value="">Select a country</option>
+                    {countries.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className={labelClass}>Company Name *</label>
+                  <input
+                    required
+                    type="text"
+                    name="companyName"
+                    value={form.companyName}
+                    onChange={handleChange}
+                    placeholder="Your Company LLC"
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-display text-xl font-semibold text-bone mb-6">
+                Interested In
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {interestOptions.map((opt) => {
+                  const active = interests.includes(opt);
+                  return (
+                    <button
+                      type="button"
+                      key={opt}
+                      onClick={() => toggleInterest(opt)}
+                      className={`px-5 py-2.5 rounded-full text-sm border transition-colors ${
+                        active
+                          ? "bg-amber text-ink border-amber"
+                          : "bg-transparent text-bone/60 border-ink-line hover:border-amber/50"
+                      }`}
+                    >
+                      {opt}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Honeypot field — hidden from real users */}
+            <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+              <label htmlFor="bot-field">Don't fill this out</label>
+              <input
+                type="text"
+                id="bot-field"
+                name="bot-field"
+                tabIndex={-1}
+                autoComplete="off"
+                value={botField}
+                onChange={(e) => setBotField(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className={labelClass}>
+                What is {challenge.a} + {challenge.b}? *
+              </label>
+              <input
+                required
+                type="text"
+                inputMode="numeric"
+                value={captchaAnswer}
+                onChange={(e) => {
+                  setCaptchaAnswer(e.target.value);
+                  setCaptchaError(false);
+                }}
+                placeholder="Your answer"
+                className={`${inputClass} max-w-[160px] ${captchaError ? "border-red-400" : ""}`}
+              />
+              {captchaError && (
+                <p className="text-red-400 text-xs mt-2">
+                  That's not quite right — try the new sum below.
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-start gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setAgreed((a) => !a);
+                  setAgreedError(false);
+                }}
+                className={`mt-0.5 shrink-0 w-5 h-5 rounded border flex items-center justify-center transition-colors ${
+                  agreed ? "bg-amber border-amber" : "border-ink-line"
+                }`}
+                aria-pressed={agreed}
+                aria-label="Accept privacy terms"
+              >
+                {agreed && <span className="w-2.5 h-2.5 rounded-sm bg-ink" />}
+              </button>
+              <label className="text-sm text-bone/70">I accept the Privacy Terms</label>
+            </div>
+            {agreedError && (
+              <p className="text-red-400 text-xs -mt-6">
+                Please accept the privacy terms to continue.
+              </p>
+            )}
+
             <button
-              type="button"
-              key={opt}
-              onClick={() => toggleInterest(opt)}
-              className={`px-4 py-2 rounded-full text-sm border transition-colors ${
-                interests.includes(opt)
-                  ? "bg-amber text-ink border-amber"
-                  : "border-ink-line text-bone/70 hover:border-amber"
-              }`}
+              type="submit"
+              disabled={submitting}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-mono text-sm uppercase tracking-wideish bg-amber text-ink px-10 py-4 rounded-full hover:bg-bone transition-colors disabled:opacity-60"
             >
-              {opt}
+              {submitting ? "Sending..." : "Submit"}
             </button>
-          ))}
-        </div>
+            {submitError && (
+              <p className="text-red-400 text-sm">
+                Something went wrong sending that — please try again, or email us directly at
+                info@connectspotexhibitions.com.
+              </p>
+            )}
+          </motion.form>
+        )}
       </div>
-
-      <div>
-        <label className={labelClass}>
-          What's {challenge.a} + {challenge.b}?
-        </label>
-        <input
-          required
-          type="number"
-          value={captchaAnswer}
-          onChange={(e) => setCaptchaAnswer(e.target.value)}
-          className={inputClass}
-          placeholder="Your answer"
-        />
-      </div>
-
-      <label className="flex items-start gap-3 text-sm text-bone/60">
-        <input
-          required
-          type="checkbox"
-          checked={agreed}
-          onChange={(e) => setAgreed(e.target.checked)}
-          className="mt-1"
-        />
-        I agree to be contacted by Connect Spot Exhibitions regarding my enquiry.
-      </label>
-
-      {submitError && (
-        <p className="text-sm text-red-400">
-          Something went wrong — please check the form and try again.
-        </p>
-      )}
-
-      <button
-        type="submit"
-        disabled={submitting}
-        className="w-full sm:w-auto px-8 py-4 bg-amber text-ink font-display font-semibold tracking-wide rounded-full hover:bg-bone transition-colors disabled:opacity-60"
-      >
-        {submitting ? "Sending..." : "Send Message"}
-      </button>
-    </motion.form>
+    </section>
   );
 }

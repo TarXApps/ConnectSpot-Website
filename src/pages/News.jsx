@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import evAutoShow from "../assets/portfolio/ev-auto-show.jpg";
+import PageHeader from "../components/PageHeader";
 
 const items = [
   {
@@ -21,25 +22,11 @@ const items = [
 export default function News() {
   return (
     <>
-      <section className="pt-40 pb-20 bg-ink text-center">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-6"
-          >
-            News & Insights
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            What's happening at Connect Spot
-          </motion.h1>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="News"
+        heading="What's happening at Connect Spot, and across the sectors we work in."
+        body="If you're a journalist or want to speak with our team, reach us at info@connectspotexhibitions.com."
+      />
 
       <section className="pb-24 bg-ink">
         <div className="max-w-5xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 gap-8">

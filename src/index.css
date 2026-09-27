@@ -81,6 +81,10 @@ select:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.dot-grid {
+  background-image: radial-gradient(#f4f1e959 1px, transparent 1px);
+  background-size: 22px 22px;
+}
 .eyebrow {
   letter-spacing: 0.22em;
   text-transform: uppercase;

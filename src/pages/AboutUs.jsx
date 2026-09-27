@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import PageHeader from "../components/PageHeader";
 
 const sections = [
   {
@@ -23,34 +24,11 @@ const sections = [
 export default function AboutUs() {
   return (
     <>
-      <section className="pt-40 pb-24 bg-ink">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-6"
-          >
-            About Us
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            We build platforms for people, business and industry
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 text-lg text-bone/70 max-w-2xl mx-auto leading-relaxed"
-          >
-            Connect Spot Exhibitions is a Riyadh-based events organiser delivering exhibitions,
-            conferences and managed experiences across Saudi Arabia and the region.
-          </motion.p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="About Us"
+        heading="We build platforms for people, business and industry."
+        body="Connect Spot is an exhibitions, conferences and managed events company based in Riyadh. We bring together the people, ideas and businesses that shape industries — creating platforms where meaningful connections can happen."
+      />
 
       <section className="py-20 bg-ink-soft border-t border-ink-line">
         <div className="max-w-5xl mx-auto px-6 lg:px-10 space-y-16">
