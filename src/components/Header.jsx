@@ -39,13 +39,22 @@ export default function Header() {
           <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-9 w-auto" />
         </Link>
 
-        <button
-          className="text-bone z-50 relative"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-        </button>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="hidden sm:inline-flex items-center px-6 py-2.5 border border-bone/40 text-bone text-xs font-display uppercase tracking-widest rounded-full hover:border-amber hover:text-amber transition-colors"
+          >
+            Contact Us
+          </Link>
+          <button
+            className="text-bone z-50 relative"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          </button>
+        </div>
       </div>
 
       <div

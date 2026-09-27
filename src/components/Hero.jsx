@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { LinkedinIcon, InstagramIcon, FacebookIcon, TwitterIcon } from "./icons/SocialIcons";
 
 export default function Hero() {
   return (
@@ -20,11 +18,20 @@ export default function Hero() {
 
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 lg:px-10 pt-32">
         <div className="max-w-7xl mx-auto w-full">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="font-display text-amber text-sm tracking-[0.3em] uppercase mb-4"
+          >
+            Connect Spot
+          </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-poppins font-black uppercase text-[11vw] sm:text-[6.5vw] lg:text-[5vw] leading-[0.98] sm:leading-[0.92] whitespace-normal sm:whitespace-nowrap text-bone"
+            className="font-mortend uppercase text-[11vw] sm:text-[6.5vw] lg:text-[5vw] leading-[0.98] sm:leading-[0.92] whitespace-normal sm:whitespace-nowrap text-bone"
           >
             A decade of<br />
             building events<br />
@@ -50,30 +57,27 @@ export default function Hero() {
           >
             <Link
               to="/contact"
-              className="inline-block px-8 py-4 bg-amber text-ink font-display font-semibold tracking-wide rounded-full hover:bg-bone transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-amber text-bone font-display text-sm uppercase tracking-widest rounded-full hover:bg-amber hover:text-ink transition-colors"
             >
-              Talk to Us
+              Talk to Us <span aria-hidden="true">→</span>
             </Link>
           </motion.div>
         </div>
       </div>
 
       <div className="relative z-10 flex items-center justify-between px-6 lg:px-10 pb-10 max-w-7xl mx-auto w-full">
-        <div className="flex items-center gap-5">
-          <a href="#" aria-label="LinkedIn" className="text-bone/70 hover:text-amber transition-colors">
-            <LinkedinIcon className="w-5 h-5" />
-          </a>
-          <a href="#" aria-label="Instagram" className="text-bone/70 hover:text-amber transition-colors">
-            <InstagramIcon className="w-5 h-5" />
-          </a>
-          <a href="#" aria-label="Facebook" className="text-bone/70 hover:text-amber transition-colors">
-            <FacebookIcon className="w-5 h-5" />
-          </a>
-          <a href="#" aria-label="X" className="text-bone/70 hover:text-amber transition-colors">
-            <TwitterIcon className="w-5 h-5" />
-          </a>
+        <div className="flex items-center gap-6 font-display text-sm tracking-wide">
+          <a href="#" className="text-bone/70 hover:text-amber transition-colors">LinkedIn</a>
+          <a href="#" className="text-bone/70 hover:text-amber transition-colors">Instagram</a>
+          <a href="#" className="text-bone/70 hover:text-amber transition-colors">Facebook</a>
+          <a href="#" className="text-bone/70 hover:text-amber transition-colors">X</a>
         </div>
-        <ChevronDown className="w-6 h-6 text-bone/50 animate-bounce hidden sm:block" />
+        <div className="hidden sm:flex flex-col items-center gap-2 text-bone/50">
+          <span className="text-[11px] tracking-[0.3em] uppercase [writing-mode:vertical-lr]">
+            Scroll
+          </span>
+          <span className="w-px h-8 bg-bone/30" />
+        </div>
       </div>
     </section>
   );
