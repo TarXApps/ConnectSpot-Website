@@ -31,7 +31,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-mortend uppercase text-[11vw] sm:text-[6.5vw] lg:text-[5vw] leading-[0.98] sm:leading-[0.92] whitespace-normal sm:whitespace-nowrap text-bone"
+            className="font-poppins font-black uppercase text-[11vw] sm:text-[6.5vw] lg:text-[5vw] leading-[0.98] sm:leading-[0.92] whitespace-normal sm:whitespace-nowrap text-bone"
           >
             A decade of<br />
             building events<br />
