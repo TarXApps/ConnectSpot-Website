@@ -10,14 +10,18 @@ export default function ClientLogos() {
         </p>
       </div>
       <div className="overflow-hidden">
-        <div className="flex items-center gap-14 w-max animate-marquee">
+        <div className="flex items-center gap-6 w-max animate-marquee">
           {doubled.map((logo, i) => (
-            <img
+            <div
               key={i}
-              src={logo}
-              alt=""
-              className="h-10 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-            />
+              className="flex items-center justify-center bg-bone rounded-xl h-20 w-40 sm:h-24 sm:w-48 shrink-0 px-6 py-4"
+            >
+              <img
+                src={logo}
+                alt=""
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
           ))}
         </div>
       </div>
