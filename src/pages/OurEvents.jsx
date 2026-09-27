@@ -11,91 +11,108 @@ export default function OurEvents() {
         body="Different sectors. Different audiences. Different ambitions. One purpose: bringing the right people together."
       />
 
-      <section className="pb-24 bg-ink">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {editions.map((ed, i) => (
-            <motion.div
-              key={ed.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="rounded-2xl overflow-hidden border border-ink-line group"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={ed.image}
-                  alt={ed.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4 bg-ink-soft">
-                <p className="font-display font-semibold">{ed.title}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-24 bg-ink-soft border-t border-ink-line">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+      <section className="bg-ink py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-3xl sm:text-4xl font-bold mb-12 text-center"
+            className="mb-12"
           >
-            What's coming next
-          </motion.h2>
+            <p className="eyebrow text-amber mb-4">EV Auto Show Riyadh</p>
+            <h2 className="font-googlesans font-semibold text-2xl sm:text-3xl tracking-tightest mb-3 max-w-2xl">
+              The future of mobility, brought to the market.
+            </h2>
+            <p className="text-bone/60 max-w-xl">
+              A platform connecting the electric vehicle industry with buyers, investors,
+              businesses and enthusiasts.
+            </p>
+          </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+            {editions.map((ed, i) => (
+              <motion.a
+                key={ed.title}
+                href={ed.url}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="group rounded-2xl border border-ink-line bg-ink-soft overflow-hidden flex flex-col"
+              >
+                <div className="h-36 overflow-hidden">
+                  <img
+                    src={ed.image}
+                    alt={ed.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-display text-base font-semibold text-bone mb-2">
+                    {ed.title}
+                  </h3>
+                  <p className="text-bone/60 text-sm leading-relaxed flex-1 mb-4">
+                    {ed.tagline}
+                  </p>
+                  <span className="font-mono text-xs uppercase tracking-wideish text-amber inline-flex items-center gap-1">
+                    Visit Event{" "}
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="eyebrow text-bone/40 mb-6"
+          >
+            Coming Events
+          </motion.p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {comingSoon.map((ev, i) => {
               const Icon = ev.icon;
-              const content = (
-                <>
-                  <div className="w-11 h-11 rounded-full bg-ink-soft border border-ink-line flex items-center justify-center mb-4 group-hover:border-amber transition-colors">
+              return (
+                <motion.div
+                  key={ev.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="rounded-2xl border border-dashed border-ink-line flex flex-col items-center justify-center min-h-[160px] text-center px-4 py-6"
+                >
+                  <div className="w-11 h-11 rounded-full bg-ink-soft border border-ink-line flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-amber" strokeWidth={1.5} />
                   </div>
-                  <p className="font-display font-semibold mb-1">{ev.title}</p>
-                  <p className="text-sm text-bone/50">
-                    {ev.url ? "Coming soon" : "Website coming soon"}
+                  <p className="font-display text-base font-semibold text-bone/80 mb-2">
+                    {ev.title}
                   </p>
-                </>
-              );
-              const className =
-                "group p-6 rounded-2xl bg-ink border border-ink-line hover:border-amber/50 transition-colors text-left w-full";
-
-              return ev.url ? (
-                <motion.a
-                  key={ev.title}
-                  href={ev.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 4) * 0.1 }}
-                  className={className}
-                >
-                  {content}
-                </motion.a>
-              ) : (
-                <motion.button
-                  key={ev.title}
-                  type="button"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 4) * 0.1 }}
-                  className={className}
-                >
-                  {content}
-                </motion.button>
+                  <p className="font-mono text-xs uppercase tracking-wideish text-bone/30">
+                    Coming soon
+                  </p>
+                </motion.div>
               );
             })}
           </div>
         </div>
+      </section>
+
+      <section className="bg-ink-soft border-t border-ink-line py-16 lg:py-20 text-center px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-bone/60 text-lg max-w-lg mx-auto"
+        >
+          Different conversations. Different opportunities. One place to bring them together.
+        </motion.p>
       </section>
     </>
   );

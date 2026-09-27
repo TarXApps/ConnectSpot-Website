@@ -16,42 +16,58 @@ const services = [
   {
     icon: CalendarRange,
     title: "Event Planning & Design",
-    body: "From concept to floor plan, we design events that are built around clear commercial outcomes.",
+    tagline: "Start with the right idea.",
+    body: "We shape the concept, format and experience around what the event needs to achieve.",
+    tags: ["Strategy", "Concept", "Design", "Planning", "Venue", "Floorplan"],
   },
   {
     icon: ClipboardList,
     title: "Event Management",
-    body: "End-to-end delivery — venue, logistics, vendors and onsite execution — handled by one accountable team.",
+    tagline: "Then we make it happen.",
+    body: "The people, timelines and details that turn the plan into a live event.",
+    tags: ["Project Management", "Exhibitors", "Delegates", "Speakers", "Guests", "On-Site Delivery"],
   },
   {
     icon: Megaphone,
     title: "Marketing & Communications",
-    body: "Positioning, content and PR that build audience and authority long before doors open.",
+    tagline: "Bring the audience with you.",
+    body: "We create the campaigns and content that give the event reach and give people a reason to attend.",
+    tags: ["Strategy", "Digital", "Social", "Content", "PR", "Email", "Audience Promotion"],
   },
   {
     icon: Sparkles,
     title: "Brand Activations",
-    body: "Immersive brand moments that turn exhibition floors into memorable experiences.",
+    tagline: "Make the brand part of the experience.",
+    body: "From launches to live experiences, we create moments built around the audience.",
+    tags: ["Activations", "Experiences", "Launches", "Engagement"],
   },
   {
     icon: LayoutGrid,
     title: "Booth Experiences",
-    body: "Booth design and build that gets your brand noticed and gets visitors talking.",
+    tagline: "Your space should do more than look good.",
+    body: "We create exhibition spaces that give brands a place to meet, engage and do business.",
+    tags: ["Concept", "Design", "Production", "Build", "Installation"],
   },
   {
     icon: Cpu,
     title: "Technology Integration",
-    body: "Registration, badge scanning, lead capture and event apps that keep everything connected.",
+    tagline: "Bring the experience forward.",
+    body: "We integrate technology where it adds value to the experience.",
+    tags: ["Digital Experiences", "Interactive Solutions", "Event Technology"],
   },
   {
     icon: Camera,
     title: "Photography & Videography",
-    body: "Professional coverage that captures your event's best moments for marketing long after it ends.",
+    tagline: "The event ends. The story doesn't have to.",
+    body: "We capture the moments and content that keep the event moving after the doors close.",
+    tags: ["Photography", "Video", "Social Content", "Event Coverage"],
   },
   {
     icon: Building2,
     title: "Corporate Production",
-    body: "Conferences, summits and internal events produced with the same rigor as our flagship exhibitions.",
+    tagline: "From the boardroom to the big stage.",
+    body: "We produce corporate events, launches, conferences and live experiences from concept through delivery.",
+    tags: ["Corporate Events", "Launches", "Conferences", "Awards", "Live Production"],
   },
 ];
 
@@ -64,35 +80,64 @@ export default function OurServices() {
         body="Some clients need one part of the process. Others need the whole thing. We do both."
       />
 
-      <section className="pb-24 bg-ink">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i % 4) * 0.1 }}
-              className="p-6 rounded-2xl bg-ink-soft border border-ink-line hover:border-amber/50 transition-colors"
-            >
-              <s.icon className="w-8 h-8 text-amber mb-4" strokeWidth={1.5} />
-              <h3 className="font-display text-lg font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-bone/65 leading-relaxed">{s.body}</p>
-            </motion.div>
-          ))}
+      <section className="bg-ink py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+                className="rounded-2xl border border-ink-line bg-ink-soft p-6"
+              >
+                <div className="w-11 h-11 rounded-full bg-ink border border-ink-line flex items-center justify-center mb-5">
+                  <s.icon className="w-5 h-5 text-amber" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display text-lg font-semibold text-bone mb-1">{s.title}</h3>
+                <p className="text-amber text-sm font-mono uppercase tracking-wideish mb-3">
+                  {s.tagline}
+                </p>
+                <p className="text-bone/60 text-sm leading-relaxed mb-4">{s.body}</p>
+                <p className="text-xs text-bone/40 font-mono">{s.tags.join(" · ")}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-24 bg-ink text-center">
-        <h2 className="font-display text-3xl sm:text-4xl font-bold mb-8">
-          Let's plan your next event
-        </h2>
-        <Link
-          to="/contact"
-          className="inline-block px-8 py-4 bg-amber text-ink font-display font-semibold tracking-wide rounded-full hover:bg-bone transition-colors"
+      <section className="bg-ink-soft border-t border-ink-line py-20 lg:py-28 text-center px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          className="font-googlesans font-semibold text-3xl sm:text-4xl tracking-tightest max-w-xl mx-auto text-balance mb-3"
         >
-          Talk to Us
-        </Link>
+          What are you building?
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-bone/60 text-lg mb-10"
+        >
+          Let's bring it together.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wideish bg-amber text-ink px-10 py-5 rounded-full hover:bg-bone transition-colors"
+          >
+            Start a Conversation
+          </Link>
+        </motion.div>
       </section>
     </>
   );

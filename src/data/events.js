@@ -7,10 +7,30 @@ import ev3 from "../assets/events/ev-3.jpg";
 import evAutoShow from "../assets/portfolio/ev-auto-show.jpg";
 
 export const editions = [
-  { title: "1st Edition — EV Auto Show", image: ev1 },
-  { title: "2nd Edition — EV Auto Show", image: ev2 },
-  { title: "3rd Edition — EV Auto Show", image: ev3 },
-  { title: "4th Edition — EV Auto Show", image: evAutoShow },
+  {
+    title: "1st Edition — EV Auto Show Riyadh",
+    tagline: "Where it started: the region's first dedicated platform for the EV industry.",
+    url: "https://www.evautoshowonline.com",
+    image: ev1,
+  },
+  {
+    title: "2nd Edition — EV Auto Show Riyadh",
+    tagline: "A growing floor, a growing industry — more manufacturers, more buyers.",
+    url: "https://www.evautoshowonline.com",
+    image: ev2,
+  },
+  {
+    title: "3rd Edition — EV Auto Show Riyadh",
+    tagline: "The show the region's EV industry now builds its calendar around.",
+    url: "https://www.evautoshowonline.com",
+    image: ev3,
+  },
+  {
+    title: "4th Edition — EV Auto Show Riyadh",
+    tagline: "The most recent edition — the region's biggest EV industry gathering yet.",
+    url: "https://www.evautoshowonline.com",
+    image: evAutoShow,
+  },
 ];
 
 export const comingSoon = [
