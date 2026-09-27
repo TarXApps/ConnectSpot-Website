@@ -1,79 +1,80 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail } from "lucide-react";
-import { LinkedinIcon, InstagramIcon, FacebookIcon, TwitterIcon } from "./icons/SocialIcons";
 import logoWhite from "../assets/CPLogo_white.png";
+
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Our Services", to: "/our-services" },
+  { label: "Our Events", to: "/our-events" },
+  { label: "News & Insights", to: "/news" },
+  { label: "Contact Us", to: "/contact" },
+];
+
+const socialLabels = ["LinkedIn", "Instagram", "Facebook", "X"];
 
 export default function Footer() {
   return (
-    <footer className="bg-ink-soft border-t border-ink-line pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
+    <footer className="bg-ink border-t border-ink-line pt-16 pb-10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
           <div>
-            <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-9 w-auto mb-4" />
-            <p className="text-bone/60 text-sm leading-relaxed max-w-xs">
-              Building exhibitions and conferences that connect businesses, people and ideas
-              across the region.
+            <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-7 w-auto mb-4" />
+            <p className="text-bone/40 text-sm max-w-xs">
+              A decade of building events that move markets.
             </p>
           </div>
 
           <div>
-            <h4 className="font-display text-sm tracking-wide text-amber mb-4">Navigate</h4>
-            <ul className="space-y-2 text-sm text-bone/70">
-              <li><Link to="/" className="hover:text-amber transition-colors">Home</Link></li>
-              <li><Link to="/about" className="hover:text-amber transition-colors">About Us</Link></li>
-              <li><Link to="/our-services" className="hover:text-amber transition-colors">Our Services</Link></li>
-              <li><Link to="/our-events" className="hover:text-amber transition-colors">Our Events</Link></li>
-              <li><Link to="/news" className="hover:text-amber transition-colors">News & Insights</Link></li>
-              <li><Link to="/contact" className="hover:text-amber transition-colors">Contact Us</Link></li>
-            </ul>
+            <p className="eyebrow text-bone/40 mb-4">Quick Links</p>
+            <nav className="grid grid-cols-2 gap-x-10 gap-y-3">
+              {quickLinks.map((l) => (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  className="text-sm text-bone/60 hover:text-amber transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
           <div>
-            <h4 className="font-display text-sm tracking-wide text-amber mb-4">Get in touch</h4>
-            <ul className="space-y-3 text-sm text-bone/70">
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-amber" />
-                Riyadh, Saudi Arabia
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 shrink-0 text-amber" />
-                <a href="tel:+966564319472" className="hover:text-amber transition-colors">
-                  +966 56 431 9472
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 shrink-0 text-amber" />
-                <a href="mailto:info@connectspotexhibitions.com" className="hover:text-amber transition-colors">
-                  info@connectspotexhibitions.com
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-display text-sm tracking-wide text-amber mb-4">Follow us</h4>
-            <div className="flex items-center gap-4">
-              <a href="#" aria-label="LinkedIn" className="text-bone/70 hover:text-amber transition-colors">
-                <LinkedinIcon className="w-5 h-5" />
+            <p className="eyebrow text-bone/40 mb-4">Contact</p>
+            <div className="text-sm text-bone/60 space-y-2 max-w-xs">
+              <p>Connect Spot Exhibitions</p>
+              <p className="text-bone/50">Riyadh, Saudi Arabia</p>
+              <a
+                href="tel:+966564319472"
+                className="block hover:text-amber transition-colors"
+              >
+                +966 56 431 9472
               </a>
-              <a href="#" aria-label="Instagram" className="text-bone/70 hover:text-amber transition-colors">
-                <InstagramIcon className="w-5 h-5" />
-              </a>
-              <a href="#" aria-label="Facebook" className="text-bone/70 hover:text-amber transition-colors">
-                <FacebookIcon className="w-5 h-5" />
-              </a>
-              <a href="#" aria-label="X" className="text-bone/70 hover:text-amber transition-colors">
-                <TwitterIcon className="w-5 h-5" />
+              <a
+                href="mailto:info@connectspotexhibitions.com"
+                className="block hover:text-amber transition-colors"
+              >
+                info@connectspotexhibitions.com
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-ink-line pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-bone/40">
-            © {new Date().getFullYear()} Connect Spot Exhibitions. All rights reserved.
+        <div className="mt-14 pt-8 border-t border-ink-line flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex gap-5">
+            {socialLabels.map((label) => (
+              <a
+                key={label}
+                href="#"
+                className="text-xs font-mono text-bone/40 hover:text-amber transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+          <p className="text-xs text-bone/30 font-mono">
+            Copyright © {new Date().getFullYear()} Connect Spot Exhibitions. All rights reserved.
           </p>
-          <p className="text-xs text-bone/40">Riyadh, Saudi Arabia</p>
         </div>
       </div>
     </footer>
