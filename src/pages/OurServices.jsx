@@ -10,7 +10,6 @@ import {
   Camera,
   Building2,
 } from "lucide-react";
-import ClientLogos from "../components/ClientLogos";
 
 const services = [
   {
@@ -96,8 +95,6 @@ export default function OurServices() {
           ))}
         </div>
       </section>
-
-      <ClientLogos />
 
       <section className="py-24 bg-ink text-center">
         <h2 className="font-display text-3xl sm:text-4xl font-bold mb-8">

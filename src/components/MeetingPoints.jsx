@@ -1,57 +1,49 @@
 import { motion } from "framer-motion";
 
 const points = [
-  {
-    title: "Where industries meet",
-    body: "Every event we build is a meeting point — a place where decision-makers, investors and innovators come together to move their sectors forward.",
-  },
-  {
-    title: "Where deals are made",
-    body: "We design the floor, the sessions and the moments that turn conversations into contracts.",
-  },
-  {
-    title: "Where markets grow",
-    body: "From first edition to flagship, our platforms are built to scale with the industries they serve.",
-  },
+  "The right businesses.",
+  "The right people.",
+  "The right conversations.",
+  "Brought together in one place.",
 ];
 
 export default function MeetingPoints() {
   return (
-    <section className="py-24 bg-ink">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="font-display text-amber text-sm tracking-[0.2em] uppercase mb-4"
-        >
-          What We Believe
-        </motion.p>
+    <section className="bg-ink py-16 lg:py-20 border-b border-ink-line">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold max-w-3xl mb-16"
+          className="font-googlesans font-semibold text-3xl sm:text-4xl lg:text-5xl tracking-tightest max-w-3xl text-balance mb-10"
         >
-          Meeting points for the industries we serve
+          We build events that become meeting points for industries.
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-3 max-w-3xl mb-10">
           {points.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 30 }}
+            <motion.p
+              key={p}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="border-t border-ink-line pt-6"
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="font-display text-lg text-bone/85"
             >
-              <h3 className="font-display text-xl font-semibold mb-3">{p.title}</h3>
-              <p className="text-bone/65 leading-relaxed">{p.body}</p>
-            </motion.div>
+              {p}
+            </motion.p>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-bone/60 text-base max-w-2xl"
+        >
+          From the first idea to the final guest, we bring strategy, creative, marketing, production and operations together under one team.
+        </motion.p>
       </div>
     </section>
   );
