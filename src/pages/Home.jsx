@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
 import MeetingPoints from "../components/MeetingPoints";
 import StatsBar from "../components/StatsBar";
+import ClientLogos from "../components/ClientLogos";
 import RewritingModel from "../components/RewritingModel";
 import Testimonial from "../components/Testimonial";
 import VideoSection from "../components/VideoSection";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <MeetingPoints />
       <StatsBar />
+      <ClientLogos />
       <RewritingModel />
       <Testimonial />
       <VideoSection />
