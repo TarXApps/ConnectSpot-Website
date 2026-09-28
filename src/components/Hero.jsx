@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-ink">
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover opacity-60"
         autoPlay
         muted
         loop
@@ -14,7 +14,7 @@ export default function Hero() {
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/70 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/60 to-ink" />
 
       <div className="relative z-10 flex-1 flex flex-col justify-center px-6 lg:px-10 pt-32">
         <div className="max-w-7xl mx-auto w-full">
