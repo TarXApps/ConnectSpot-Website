@@ -78,11 +78,10 @@ export default function OurServices() {
         eyebrow="Our Services"
         heading="We take events from idea to execution."
         body="Some clients need one part of the process. Others need the whole thing. We do both."
-        maxWidthClass="max-w-[1400px]"
       />
 
       <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <motion.div

@@ -9,11 +9,10 @@ export default function OurEvents() {
         eyebrow="Events"
         heading="Events that give industries a place to meet."
         body="Different sectors. Different audiences. Different ambitions. One purpose: bringing the right people together."
-        maxWidthClass="max-w-[1400px]"
       />
 
       <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
