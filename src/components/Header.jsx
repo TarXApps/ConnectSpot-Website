@@ -29,46 +29,51 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-        scrolled ? "bg-ink/95 backdrop-blur-md border-b border-ink-line" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
-          <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-9 w-auto" />
-        </Link>
-
-        <div className="flex items-center gap-4">
-          <Link
-            to="/contact"
-            onClick={() => setOpen(false)}
-            className="hidden sm:inline-flex items-center px-6 py-2.5 border border-bone/40 text-bone text-xs font-display uppercase tracking-widest rounded-full hover:border-amber hover:text-amber transition-colors"
-          >
-            Contact Us
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+          scrolled ? "bg-ink/95 backdrop-blur-md border-b border-ink-line" : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+          <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
+            <img src={logoWhite} alt="Connect Spot Exhibitions" className="h-9 w-auto" />
           </Link>
-          <button
-            className="text-bone z-50 relative"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-          </button>
-        </div>
-      </div>
 
-      {/* Backdrop — click to close */}
+          <div className="flex items-center gap-4">
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="hidden sm:inline-flex items-center px-6 py-2.5 border border-bone/40 text-bone text-xs font-display uppercase tracking-widest rounded-full hover:border-amber hover:text-amber transition-colors"
+            >
+              Contact Us
+            </Link>
+            <button
+              className="text-bone z-50 relative"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Backdrop — click to close. Rendered outside <header> so the
+          header's scrolled-state backdrop-blur never turns it into a
+          containing block that traps this fixed element inside the
+          80px-tall header bar. */}
       <div
         onClick={() => setOpen(false)}
         aria-hidden="true"
-        className={`fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-ink/60 backdrop-blur-sm transition-opacity duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
 
       {/* Slide-in panel — capped at 1/3 of the screen width */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-1/3 min-w-[240px] max-w-sm bg-ink border-l border-ink-line shadow-2xl transition-transform duration-300 overflow-y-auto ${
+        className={`fixed top-0 right-0 bottom-0 z-40 w-1/3 min-w-[240px] max-w-sm bg-ink border-l border-ink-line shadow-2xl transition-transform duration-300 overflow-y-auto ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -101,6 +106,6 @@ export default function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
