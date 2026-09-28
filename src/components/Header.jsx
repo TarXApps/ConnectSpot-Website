@@ -57,25 +57,35 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Backdrop — click to close */}
       <div
-        className={`fixed inset-0 bg-ink transition-transform duration-300 ${
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+        className={`fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity duration-300 ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Slide-in panel — capped at 1/3 of the screen width */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 w-1/3 min-w-[240px] max-w-sm bg-ink border-l border-ink-line shadow-2xl transition-transform duration-300 overflow-y-auto ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col items-center justify-center h-full gap-8">
+        <nav className="flex flex-col items-start justify-center min-h-full gap-6 px-8 py-24">
           {navLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `text-2xl sm:text-3xl font-display ${isActive ? "text-amber" : "text-bone"}`
+                `text-lg sm:text-xl font-display ${isActive ? "text-amber" : "text-bone"}`
               }
             >
               {l.label}
             </NavLink>
           ))}
-          <div className="flex items-center gap-6 mt-6">
+          <div className="flex items-center gap-5 mt-6">
             <a href="#" aria-label="LinkedIn" className="text-bone/70">
               <LinkedinIcon className="w-5 h-5" />
             </a>
