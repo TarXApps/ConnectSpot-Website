@@ -323,7 +323,16 @@ export default function ContactSection() {
               </button>
               <div>
                 <label className="text-sm font-medium text-bone">
-                  I accept the Privacy Terms <span className="text-amber">*</span>
+                  I accept the{" "}
+                  <a
+                    href="#/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber underline underline-offset-2 hover:text-bone transition-colors"
+                  >
+                    Privacy Terms
+                  </a>{" "}
+                  <span className="text-amber">*</span>
                 </label>
                 <p className="text-xs text-bone/50 mt-1">
                   Required to submit this form — check the box above to confirm.

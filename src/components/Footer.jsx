@@ -72,9 +72,17 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-xs text-bone/30 font-mono">
-            Copyright © {new Date().getFullYear()} Connect Spot Exhibitions. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/privacy-policy"
+              className="text-xs font-mono text-bone/40 hover:text-amber transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <p className="text-xs text-bone/30 font-mono">
+              Copyright © {new Date().getFullYear()} Connect Spot Exhibitions. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

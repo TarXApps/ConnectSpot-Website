@@ -10,6 +10,7 @@ import OurServices from "./pages/OurServices";
 import OurEvents from "./pages/OurEvents";
 import News from "./pages/News";
 import ContactUs from "./pages/ContactUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/our-events" element={<OurEvents />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
         <Footer />
