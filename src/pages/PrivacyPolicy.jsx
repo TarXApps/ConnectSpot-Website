@@ -105,8 +105,8 @@ export default function PrivacyPolicy() {
         body="How Connect Spot Exhibitions collects, uses and protects your information."
       />
 
-      <section className="bg-ink py-16 lg:py-20">
-        <div className="max-w-[820px] mx-auto px-6 lg:px-10">
+      <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <p className="text-bone/40 text-sm font-mono mb-12">
             Last updated: {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
           </p>

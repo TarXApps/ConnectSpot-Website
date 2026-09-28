@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 
-export default function PageHeader({ eyebrow, heading, body }) {
+export default function PageHeader({ eyebrow, heading, body, maxWidthClass = "max-w-[1000px]" }) {
   return (
-    <section className="relative bg-ink pt-40 pb-20 lg:pt-48 lg:pb-24 overflow-hidden">
+    <section className="relative bg-ink pt-40 pb-14 lg:pt-48 lg:pb-16 overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-10" />
-      <div className="relative max-w-[1000px] mx-auto px-6 lg:px-10">
+      <div className={`relative ${maxWidthClass} mx-auto px-6 lg:px-10`}>
         {eyebrow && (
           <motion.p
             initial={{ opacity: 0, y: 12 }}

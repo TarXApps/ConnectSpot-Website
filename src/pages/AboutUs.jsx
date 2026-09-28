@@ -19,8 +19,8 @@ export default function AboutUs() {
         body="Connect Spot is an exhibitions, conferences and managed events company based in Riyadh. We bring together the people, ideas and businesses that shape industries — creating platforms where meaningful connections can happen."
       />
 
-      <section className="bg-ink py-16 lg:py-20">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+      <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function AboutUs() {
       </section>
 
       <section className="bg-ink-soft border-y border-ink-line py-16 lg:py-20">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function AboutUs() {
       </section>
 
       <section className="bg-ink py-16 lg:py-20">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

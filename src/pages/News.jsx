@@ -23,8 +23,8 @@ export default function News() {
         body="If you're a journalist or want to speak with our team, reach us at info@connectspotexhibitions.com."
       />
 
-      <section className="bg-ink py-16 lg:py-20">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10 space-y-8">
+      <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10 space-y-8">
           {items.map((item, i) => (
             <motion.div
               key={item.title}

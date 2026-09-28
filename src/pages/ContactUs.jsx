@@ -19,8 +19,8 @@ export default function ContactUs() {
         body="Whether you're exhibiting, sponsoring, or pitching us an idea, tell us what you're trying to do and we'll tell you if we're the right fit."
       />
 
-      <section className="bg-ink py-16 lg:py-20">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+      <section className="bg-ink pt-6 pb-16 lg:pt-8 lg:pb-20">
+        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
