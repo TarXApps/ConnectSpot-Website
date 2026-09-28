@@ -288,28 +288,53 @@ export default function ContactSection() {
               )}
             </div>
 
-            <div className="flex items-start gap-3">
+            <div
+              className={`flex items-start gap-4 rounded-xl border p-4 transition-colors ${
+                agreedError
+                  ? "border-red-400 bg-red-400/5"
+                  : agreed
+                  ? "border-amber/40 bg-amber/5"
+                  : "border-ink-line bg-ink"
+              }`}
+            >
               <button
                 type="button"
                 onClick={() => {
                   setAgreed((a) => !a);
                   setAgreedError(false);
                 }}
-                className={`mt-0.5 shrink-0 w-5 h-5 rounded border flex items-center justify-center transition-colors ${
-                  agreed ? "bg-amber border-amber" : "border-ink-line"
+                className={`mt-0.5 shrink-0 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${
+                  agreed ? "bg-amber border-amber" : "border-bone/40"
                 }`}
                 aria-pressed={agreed}
                 aria-label="Accept privacy terms"
               >
-                {agreed && <span className="w-2.5 h-2.5 rounded-sm bg-ink" />}
+                {agreed && (
+                  <svg viewBox="0 0 16 16" className="w-4 h-4 text-ink" fill="none">
+                    <path
+                      d="M3 8.5 6.5 12 13 4.5"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
               </button>
-              <label className="text-sm text-bone/70">I accept the Privacy Terms</label>
+              <div>
+                <label className="text-sm font-medium text-bone">
+                  I accept the Privacy Terms <span className="text-amber">*</span>
+                </label>
+                <p className="text-xs text-bone/50 mt-1">
+                  Required to submit this form — check the box above to confirm.
+                </p>
+                {agreedError && (
+                  <p className="text-red-400 text-xs font-medium mt-2">
+                    Please accept the privacy terms to continue.
+                  </p>
+                )}
+              </div>
             </div>
-            {agreedError && (
-              <p className="text-red-400 text-xs -mt-6">
-                Please accept the privacy terms to continue.
-              </p>
-            )}
 
             <button
               type="submit"
