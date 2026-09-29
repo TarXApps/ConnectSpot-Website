@@ -325,7 +325,7 @@ export default function ContactSection() {
                 <label className="text-sm font-medium text-bone">
                   I accept the{" "}
                   <a
-                    href="#/privacy-policy"
+                    href="/privacy-policy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-amber underline underline-offset-2 hover:text-bone transition-colors"

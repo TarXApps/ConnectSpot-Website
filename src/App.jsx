@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomCursor from "./components/CustomCursor";
 import Header from "./components/Header";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -14,7 +14,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="font-body">
         <ScrollToTop />
         <CustomCursor />
@@ -33,6 +33,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

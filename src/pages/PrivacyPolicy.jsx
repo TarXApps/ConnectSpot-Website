@@ -1,4 +1,5 @@
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 const sections = [
   {
@@ -99,6 +100,11 @@ const sections = [
 export default function PrivacyPolicy() {
   return (
     <>
+      <Seo
+        title="Privacy Policy"
+        description="How Connect Spot Exhibitions collects, uses and protects the personal information of visitors to our website."
+        path="/privacy-policy"
+      />
       <PageHeader
         eyebrow="Legal"
         heading="Privacy Policy"

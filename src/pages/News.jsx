@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 const items = [
   {
@@ -17,6 +18,11 @@ const items = [
 export default function News() {
   return (
     <>
+      <Seo
+        title="News & Insights"
+        description="News, announcements and press mentions from Connect Spot Exhibitions and the sectors we work in."
+        path="/news"
+      />
       <PageHeader
         eyebrow="News"
         heading="What's happening at Connect Spot, and across the sectors we work in."

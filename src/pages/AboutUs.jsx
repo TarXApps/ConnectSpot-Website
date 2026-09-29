@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 const notJustTheEvent = [
   "An exhibition needs the right exhibitors.",
@@ -13,6 +14,11 @@ const stages = ["Strategy", "Sales", "Marketing", "Production", "Operations", "F
 export default function AboutUs() {
   return (
     <>
+      <Seo
+        title="About Us"
+        description="Connect Spot is an exhibitions, conferences and managed events company based in Riyadh, bringing together the people, ideas and businesses that shape industries."
+        path="/about"
+      />
       <PageHeader
         eyebrow="About Us"
         heading="We build platforms for people, business and industry."

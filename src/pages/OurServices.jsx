@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 import {
   CalendarRange,
   ClipboardList,
@@ -74,6 +75,11 @@ const services = [
 export default function OurServices() {
   return (
     <>
+      <Seo
+        title="Our Services"
+        description="From event planning and management to marketing, brand activations and production — see the full range of services Connect Spot delivers."
+        path="/our-services"
+      />
       <PageHeader
         eyebrow="Our Services"
         heading="We take events from idea to execution."

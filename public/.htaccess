@@ -1,8 +1,18 @@
 # Connect Spot Exhibitions — GoDaddy / Apache shared hosting config
-# The site uses HashRouter (URLs like /#/about), so no SPA rewrite rules
-# are needed — every route resolves to the single index.html automatically.
+# The site uses React Router's BrowserRouter (real URLs like /about), so
+# any request that isn't an existing file or folder must fall back to
+# index.html and let the client-side router render the right page.
 
 Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
 
 <IfModule mod_expires.c>
   ExpiresActive On

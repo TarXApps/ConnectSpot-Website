@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ContactSection from "../components/ContactSection";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 const gains = [
   "Access to audiences built for your sector, not rented for the day",
@@ -13,6 +14,11 @@ const gains = [
 export default function ContactUs() {
   return (
     <>
+      <Seo
+        title="Contact Us"
+        description="Get in touch with Connect Spot Exhibitions to discuss exhibiting, sponsoring, partnering or speaking at our events."
+        path="/contact"
+      />
       <PageHeader
         eyebrow="Contact Us"
         heading="Let's build your next event"

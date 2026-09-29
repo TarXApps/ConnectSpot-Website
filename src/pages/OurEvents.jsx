@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { editions, comingSoon } from "../data/events";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 export default function OurEvents() {
   return (
     <>
+      <Seo
+        title="Our Events"
+        description="Explore Connect Spot's events, including EV Auto Show Riyadh, the region's dedicated platform for the electric vehicle industry."
+        path="/our-events"
+      />
       <PageHeader
         eyebrow="Events"
         heading="Events that give industries a place to meet."
